@@ -16,7 +16,8 @@ jobs:
         arch: [ "Win32", "x64" ]
         toolset: [ "v143", "v142", "v141" ]
       fail-fast: false
-      
+    
+    name: "MSVC ${{ matrix.toolset }} ${{ matrix.arch }} [${{ matrix.build-type }}] on ${{ matrix.os }}"
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
