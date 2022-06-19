@@ -12,7 +12,7 @@ jobs:
       matrix:
         os: [windows-latest]
         build-type: [Debug, Release]
-        generator: [ "Visual Studio 17 2022", "Visual Studio 16 2019" ]
+        generator: [ "Visual Studio 17 2022" ]
         arch: [ "Win32", "x64" ]
       
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
