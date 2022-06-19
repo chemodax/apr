@@ -169,7 +169,7 @@ static void test_proc_args(abts_case* tc, void* data)
     const char *expected;
     const char *actual;
 
-    apr_filepath_merge(&progname, NULL, "echoargs" EXTENSION, 0, p);
+    apr_filepath_merge(&progname, NULL, TESTBINPATH "echoargs" EXTENSION, 0, p);
 
     rv = apr_procattr_create(&attr, p);
     ABTS_INT_EQUAL(tc, APR_SUCCESS, rv);
