@@ -32,7 +32,7 @@ jobs:
        
     runs-on: ubuntu-latest
     env:
-      NOTEST_CFLAGS: ${{matrix.notest-cflags}
+      NOTEST_CFLAGS: ${{ matrix.notest-cflags }}
       
     steps:
     - name: Install prereq
