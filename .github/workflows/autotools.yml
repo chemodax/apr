@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Install prereq
-      run: sudo apt-get install libtool
+      run: sudo apt-get install libtool libtool-bin
     - uses: actions/checkout@v3
     - name: buildconf
       run: ./buildconf
