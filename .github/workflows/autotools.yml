@@ -6,9 +6,19 @@ on:
   pull_request:
     branches: [ "trunk" ]
 
-jobs:
-  build:
+env:
+  MARGS: "-j2"
 
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        include: 
+          - name: Default
+          - name: Static
+            config: "--enable-static"
+        
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +28,7 @@ jobs:
     - name: buildconf
       run: ./buildconf
     - name: configure
-      run: ./configure
+      run: ./configure ${{ matrix.config }}
     - name: make
       run: make
     - name: make check
