@@ -1,4 +1,4 @@
-name: Autotools
+name: Linux
 
 on:
   push:
