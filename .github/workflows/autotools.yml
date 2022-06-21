@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install prereq
+      run: sudo apt-get install libtool
     - uses: actions/checkout@v3
     - name: buildconf
       run: ./buildconf
