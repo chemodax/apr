@@ -29,7 +29,9 @@ jobs:
           - name: Maintainer-mode, -Werror
             notest-cflags: -Werror
             config: --enable-maintainer-mode
-       
+          - name: UBsan
+            notest-cflags: -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Werror -O2
+
     runs-on: ubuntu-latest
     env:
       NOTEST_CFLAGS: ${{ matrix.notest-cflags }}
