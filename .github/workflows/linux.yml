@@ -45,7 +45,7 @@ jobs:
       NOTEST_CFLAGS: ${{ matrix.notest-cflags }}
     name: ${{ matrix.name }}
     steps:
-    - name: Install prereq
+    - name: Install prerequisites
       run: sudo apt-get install libtool libtool-bin
     - uses: actions/checkout@v3
     - name: buildconf
