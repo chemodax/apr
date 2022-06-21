@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NOTEST_CFLAGS: ${{ matrix.notest-cflags }}
-      
+    name: ${{ matrix.name }}
     steps:
     - name: Install prereq
       run: sudo apt-get install libtool libtool-bin
