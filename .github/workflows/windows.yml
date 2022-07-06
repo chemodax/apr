@@ -47,17 +47,23 @@ jobs:
         os: [windows-latest]
         build-type: [Debug, Release]
         arch: [ "Win32", "x64" ]
-        toolset: [ "v143", "v142", "v141" ]
       fail-fast: true
     
-    name: "MSVC (nmake) ${{ matrix.toolset }} ${{ matrix.arch }} [${{ matrix.build-type }}] on ${{ matrix.os }}"
+    name: "MSVC (nmake) ${{ matrix.arch }} [${{ matrix.build-type }}] on ${{ matrix.os }}"
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v3
 
+    - uses: ilammy/msvc-dev-cmd@v1.10.0
+      with:
+        arch: ${{ matrix.arch }}
+        
     - name: Build
       run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" buildall 
+
+    - name: Install
+      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" install 
 
     - name: Test
       run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" checkall 
