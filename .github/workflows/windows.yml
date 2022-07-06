@@ -40,3 +40,24 @@ jobs:
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{ matrix.build-type }} --output-on-failure
+
+  nmake:
+    strategy:
+      matrix:
+        os: [windows-latest]
+        build-type: [Debug, Release]
+        arch: [ "Win32", "x64" ]
+        toolset: [ "v143", "v142", "v141" ]
+      fail-fast: true
+    
+    name: "MSVC (nmake) ${{ matrix.toolset }} ${{ matrix.arch }} [${{ matrix.build-type }}] on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" buildall 
+
+    - name: Test
+      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" checkall 
