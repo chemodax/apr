@@ -17,7 +17,7 @@ jobs:
         toolset: [ "v143", "v142", "v141" ]
         cmake-flags: [""]
         include:
-          - cmake-flags: -DCMAKE_WARNING_AS_ERROR
+          - cmake-flags: -DCMAKE_WARNING_AS_ERROR=1
             toolset: "v143"
       fail-fast: false
        
