@@ -15,8 +15,10 @@ jobs:
         generator: [ "Visual Studio 17 2022" ]
         arch: [ "Win32", "x64" ]
         toolset: [ "v143", "v142", "v141" ]
+        cmake-flags: [""]
         include:
           - cmake-flags: -DCMAKE_WARNING_AS_ERROR
+            toolset: "v143"
       fail-fast: false
        
     name: "MSVC ${{ matrix.toolset }} ${{ matrix.arch }} [${{ matrix.build-type }}] on ${{ matrix.os }}"
