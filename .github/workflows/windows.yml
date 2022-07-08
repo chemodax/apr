@@ -58,13 +58,12 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1.10.0
       with:
         arch: ${{ matrix.arch }}
-        sdk: 10.0.17763.0
         
     - name: Build
-      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" buildall 
+      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" _WIN32_WINNT=0x601 buildall 
 
     - name: Install
-      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" install 
+      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" _WIN32_WINNT=0x601 install 
 
     - name: Test
-      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" checkall 
+      run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" _WIN32_WINNT=0x601 checkall 
