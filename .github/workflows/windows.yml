@@ -58,7 +58,7 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1.10.0
       with:
         arch: ${{ matrix.arch }}
-        sdk: 10.0.10240.0
+        sdk: 10.0.17763.0
         
     - name: Build
       run: nmake -f Makefile.win ARCH="${{ matrix.arch }} ${{ matrix.build-type }}" buildall 
